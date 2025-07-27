@@ -45,7 +45,8 @@ public class ProgramWindow extends Application {
 	buttonMultiply, buttonDivision, buttonEquals,
 	buttonDecimal, button0, button1, button2, button3,
 	button4, button5, button6, button7, button8,
-	button9, buttonAC, buttonOpenParanthesis, buttonCloseParanthesis;
+	button9, buttonAC, buttonOpenParanthesis, buttonCloseParanthesis,
+	buttonDelete,buttonSine,buttonCosine,buttonTangent,buttonCotangent;
 	
 	
 	
@@ -292,6 +293,7 @@ public class ProgramWindow extends Application {
 			buttonMultiply        = (Button)  root.lookup("#buttonMultiply");
 			buttonDivision        = (Button)  root.lookup("#buttonDivision");
 			buttonDecimal        = (Button)  root.lookup("#buttonDecimal");
+			buttonDelete        = (Button)  root.lookup("#buttonDelete");
 			buttonExponent        = (Button)  root.lookup("#buttonExponent");
 			buttonEquals        = (Button)  root.lookup("#buttonEquals");
 			buttonOpenParanthesis        = (Button)  root.lookup("#buttonOpenParanthesis");
@@ -313,12 +315,21 @@ public class ProgramWindow extends Application {
 			textField2.setEditable(false);
 			textField2.setText("");
 			
-			buttonPlus.setOnAction(e->{textField1.setText(textField1.getText()+"+");textField2.setText("");});
-			buttonMinus.setOnAction(e->{textField1.setText(textField1.getText()+"-");textField2.setText("");});
-			buttonMultiply.setOnAction(e->{textField1.setText(textField1.getText()+"x");textField2.setText("");});
-			buttonDivision.setOnAction(e->{textField1.setText(textField1.getText()+"/");textField2.setText("");});
-			buttonDecimal.setOnAction(e-> {textField1.setText(textField1.getText()+".");textField2.setText("");});
-			buttonExponent.setOnAction(e->{textField1.setText(textField1.getText()+"^");textField2.setText("");});
+			buttonPlus.setOnAction(e->
+			{textField1.setText(textField1.getText()+"+");textField2.setText("");});
+			buttonMinus.setOnAction(e->
+			{textField1.setText(textField1.getText()+"-");textField2.setText("");});
+			buttonMultiply.setOnAction(e->
+			{textField1.setText(textField1.getText()+"x");textField2.setText("");});
+			buttonDivision.setOnAction(e->
+			{textField1.setText(textField1.getText()+"/");textField2.setText("");});
+			buttonDecimal.setOnAction(e-> 
+			{textField1.setText(textField1.getText()+".");textField2.setText("");});
+			buttonDelete.setOnAction(e->
+			{textField1.setText(textField1.getText()
+					.substring(0,textField1.getText().length()-1));textField2.setText("");});
+			buttonExponent.setOnAction(e->
+			{textField1.setText(textField1.getText()+"^");textField2.setText("");});
 			buttonEquals.setOnAction(e -> {
 			    try {
 			        double sonuc = evaluate(textField1.getText());
@@ -328,19 +339,32 @@ public class ProgramWindow extends Application {
 			        ex.printStackTrace();
 			    }
 			});
-			buttonAC.setOnAction(e->{textField1.setText("");textField2.setText("");});
-			buttonOpenParanthesis.setOnAction(e->{textField1.setText(textField1.getText()+"(");textField2.setText("");});
-			buttonCloseParanthesis.setOnAction(e->{textField1.setText(textField1.getText()+")");textField2.setText("");});
-			button0.setOnAction(e->{textField1.setText(textField1.getText()+"0");textField2.setText("");});
-			button1.setOnAction(e->{textField1.setText(textField1.getText()+"1");textField2.setText("");});
-			button2.setOnAction(e->{textField1.setText(textField1.getText()+"2");textField2.setText("");});
-			button3.setOnAction(e->{textField1.setText(textField1.getText()+"3");textField2.setText("");});
-			button4.setOnAction(e->{textField1.setText(textField1.getText()+"4");textField2.setText("");});
-			button5.setOnAction(e->{textField1.setText(textField1.getText()+"5");textField2.setText("");});
-			button6.setOnAction(e->{textField1.setText(textField1.getText()+"6");textField2.setText("");});
-			button7.setOnAction(e->{textField1.setText(textField1.getText()+"7");textField2.setText("");});
-			button8.setOnAction(e->{textField1.setText(textField1.getText()+"8");textField2.setText("");});
-			button9.setOnAction(e->{textField1.setText(textField1.getText()+"9");textField2.setText("");});
+			buttonAC.setOnAction(e->
+			{textField1.setText("");textField2.setText("");});
+			buttonOpenParanthesis.setOnAction(e->
+			{textField1.setText(textField1.getText()+"(");textField2.setText("");});
+			buttonCloseParanthesis.setOnAction(e->
+			{textField1.setText(textField1.getText()+")");textField2.setText("");});
+			button0.setOnAction(e->
+			{textField1.setText(textField1.getText()+"0");textField2.setText("");});
+			button1.setOnAction(e->
+			{textField1.setText(textField1.getText()+"1");textField2.setText("");});
+			button2.setOnAction(e->
+			{textField1.setText(textField1.getText()+"2");textField2.setText("");});
+			button3.setOnAction(e->
+			{textField1.setText(textField1.getText()+"3");textField2.setText("");});
+			button4.setOnAction(e->
+			{textField1.setText(textField1.getText()+"4");textField2.setText("");});
+			button5.setOnAction(e->
+			{textField1.setText(textField1.getText()+"5");textField2.setText("");});
+			button6.setOnAction(e->
+			{textField1.setText(textField1.getText()+"6");textField2.setText("");});
+			button7.setOnAction(e->
+			{textField1.setText(textField1.getText()+"7");textField2.setText("");});
+			button8.setOnAction(e->
+			{textField1.setText(textField1.getText()+"8");textField2.setText("");});
+			button9.setOnAction(e->
+			{textField1.setText(textField1.getText()+"9");textField2.setText("");});
 			
 			
 		} catch(Exception e) {
